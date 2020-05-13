@@ -1,0 +1,22 @@
+// Sprites Map
+$sp_escape_book: (
+	name: 'sp_escape_book',
+	ratio: 3,
+	width: 1030px,
+	height: 512px,
+	image: '../img/sprite/sp_escape_book.png',
+	sprites: (
+	icon_letter: (
+			offset-x: 0px,
+			offset-y: 0px,
+			width: 512px,
+			height: 512px,
+		),
+		icon_open_book: (
+			offset-x: -518px,
+			offset-y: 0px,
+			width: 512px,
+			height: 512px,
+		),
+	)
+);

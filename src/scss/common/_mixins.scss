@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+@mixin ellipsis {
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+@mixin ellipsisMulti($line:2, $line-height:20) {
+	display: block;
+	display: -webkit-box;
+	overflow: hidden;
+	max-height: $line-height*$line+px;
+	white-space: normal;
+	word-break: break-all;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+	line-height: $line-height+px;
+}

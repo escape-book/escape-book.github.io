@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+$map_list: ()!default;
+$svg_map_list: ()!default;
+
+// 스프라이트 이미지의 base-class placeholder를 생성함
+// 새로운 스프라이트 폴더 추가 시 in 우측으로 list에 map 추가
+@each $sprite-map in join($map_list, $svg_map_list) {
+	$type: map-get($sprite-map, type);
+	$map_name: map-get($sprite-map, name);
+	$image: map-get($sprite-map, image);
+	$ratio: map-get($sprite-map, ratio);
+	$image_png: '';
+
+	@if ($type == 'svg' and map-get($sprite-map, image_png)) {
+		$image_png: map-get($sprite-map, image_png);
+	}
+
+	$map_width: map-get($sprite-map, width) / $ratio;
+	$map_height: map-get($sprite-map, height) / $ratio;
+
+	%#{$map_name}-sprite {
+		@if ($type == 'svg' and $image_png) {
+			background-image: url(#{$image_png});
+			background-image: linear-gradient(transparent, transparent), url(#{$image});
+		} @else {
+			background-image: url(#{$image});
+		}
+		// background-image: url(#{$image});
+		background-size: ceil($map_width) ceil($map_height);
+		background-repeat: no-repeat;
+	}
+}
+
+// Map deep getter
+// @param {Map} $map
+// @param {Arglist} $keys
+// @return {*} - Desired value
+@function map-deep-get($map, $keys...) {
+	@each $key in $keys {
+		$map: map-get($map, $key);
+	}
+
+	@return $map;
+}
+
+// Sprite Getter
+// @param {String} 파일명
+// @param {String} 폴더명
+// @param {Map} extend 출력 여부와 offset 값 조정
+@mixin get-sprite($filename, $sprite-map, $property: (extend: true, get-image: false, set-offset-x: 0, set-offset-y: 0)) {
+	$type: map-get($sprite-map, type);
+	$map_name: map-get($sprite-map, name);
+	$extend: map-get($property, extend);
+	$get-image: map-get($property, 'get-image');
+	$ratio: map-get($sprite-map, ratio);
+	$set-offset-x: if(map-get($property, 'set-offset-x'), map-get($property, 'set-offset-x'), 0);
+	$set-offset-y: if(map-get($property, 'set-offset-y'), map-get($property, 'set-offset-y'), 0);
+	$offset-x: map-deep-get($sprite-map, 'sprites', $filename, 'offset-x') / $ratio;
+	$offset-y: map-deep-get($sprite-map, 'sprites', $filename, 'offset-y') / $ratio;
+	$width: map-deep-get($sprite-map, 'sprites', $filename, 'width') / $ratio;
+	$height: map-deep-get($sprite-map, 'sprites', $filename, 'height') / $ratio;
+	$map_padding_x: '';
+	$map_padding_y: '';
+
+	@if ($extend == true) {
+		@extend %#{$map_name}-sprite !optional;
+	}
+
+	@if ($get-image == true) {
+		$image: map-get($sprite-map, image);
+		$map_width: map-get($sprite-map, width) / $ratio;
+		$map_height: map-get($sprite-map, height) / $ratio;
+
+		@if ($type == 'svg') {
+			$image_png: map-get($sprite-map, image_png);
+			background-image: url(#{$image_png});
+			background-image: linear-gradient(transparent, transparent), url(#{$image});
+		} @else {
+			background-image: url(#{$image});
+		}
+		background-size: ceil($map_width) ceil($map_height);
+		// background-image: url(#{$image});
+		// background-size: ceil($map_width) ceil($map_height);
+	}
+
+	@if ($type == 'svg') {
+		$map_padding_x: map-get($sprite-map, padding_x) / $ratio;
+		$map_padding_y: map-get($sprite-map, padding_y) / $ratio;
+		background-position: floor($offset-x + $set-offset-x - $map_padding_x)
+			floor($offset-y + $set-offset-y - $map_padding_y);
+	} @else {
+		background-position: floor($offset-x + $set-offset-x) floor($offset-y + $set-offset-y);
+	}
+	// background-position: floor($offset-x + $set-offset-x) floor($offset-y + $set-offset-y);
+	background-repeat: no-repeat;
+	width: ceil($width) + $set-offset-x;
+	height: ceil($height) + $set-offset-y;
+}
+
+// Sprite Background Position
+@mixin get-sprite-background-position($filename, $sprite-map, $property: (set-offset-x: 0, set-offset-y: 0)) {
+	$type: map-get($sprite-map, type);
+	$set-offset-x: if(map-get($property, 'set-offset-x'), map-get($property, 'set-offset-x'), 0);
+	$set-offset-y: if(map-get($property, 'set-offset-y'), map-get($property, 'set-offset-y'), 0);
+	$ratio: map-get($sprite-map, ratio);
+	$offset-x: map-deep-get($sprite-map, 'sprites', $filename, 'offset-x') / $ratio;
+	$offset-y: map-deep-get($sprite-map, 'sprites', $filename, 'offset-y') / $ratio;
+	$map_padding_x: '';
+	$map_padding_y: '';
+
+	@if ($type == 'svg') {
+		$map_padding_x: map-get($sprite-map, padding_x) / $ratio;
+		$map_padding_y: map-get($sprite-map, padding_y) / $ratio;
+		background-position: floor($offset-x + $set-offset-x - $map_padding_x)
+			floor($offset-y + $set-offset-y - $map_padding_y);
+	} @else {
+		background-position: floor($offset-x + $set-offset-x) floor($offset-y + $set-offset-y);
+	}
+	// background-position: floor($offset-x + $set-offset-x) floor($offset-y + $set-offset-y);
+}
+
+// Sprite Width
+@mixin get-sprite-width($filename, $sprite-map) {
+	$ratio: map-get($sprite-map, ratio);
+	$width: map-deep-get($sprite-map, 'sprites', $filename, 'width') / $ratio;
+	width: ceil($width);
+}
+
+// Sprite Height
+@mixin get-sprite-height($filename, $sprite-map) {
+	$ratio: map-get($sprite-map, ratio);
+	$height: map-deep-get($sprite-map, 'sprites', $filename, 'height') / $ratio;
+	height: ceil($height);
+}

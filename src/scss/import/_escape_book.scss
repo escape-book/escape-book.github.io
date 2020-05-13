@@ -1,0 +1,10 @@
+@charset 'utf-8';
+
+.test {
+  &:after {
+    @include get-sprite('icon_letter', $sp_escape_book);
+
+    display: block;
+    content: '';
+  }
+}

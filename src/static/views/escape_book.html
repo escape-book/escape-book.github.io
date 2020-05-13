@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Escape Book</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <link rel="stylesheet" href="../css/escape_book.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>Escape Book</h1>
+    <div class="test">
+      문 앞에는 의문의 편지가 놓여있었다.
+    </div>
+  </div>
+
+  <script src="../../js/jquery-1.12.4.min.js"></script>
+  <!-- [D] 마크업 확인용 스크립트 -->
+  <script>
+    // 헤더 영역 스크롤에 따라 제어(마크업 확인)
+    // http://webdir.tistory.com/481
+    var didScroll;
+    var lastScrollTop = 0;
+    var delta = 10;
+    var navbarHeight = $('header').outerHeight();
+
+    $(window).scroll(function (e) {
+      didScroll = true;
+    })
+
+    setInterval(function (e) {
+      if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+      }
+    }, 250)
+
+    function hasScrolled() {
+      var st = $(this).scrollTop();
+
+      if (Math.abs(lastScrollTop - st) <= delta)
+        return;
+
+      if (st > lastScrollTop && st > navbarHeight) {
+        $('header').removeClass().addClass('down');
+      } else {
+        if (st + $(window).height() < $(document).height()) {
+          $('header').removeClass().addClass('up');
+        }
+      }
+
+      lastScrollTop = st;
+    }
+
+    $(document).ready(function () {
+      // test
+      $test = $('.test');
+      $test.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        $(this).attr('aria-expanded', 'true');
+      });
+    })
+  </script>
+</body>
+
+</html>
