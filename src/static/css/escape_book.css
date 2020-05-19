@@ -36,10 +36,6 @@ body {
 	height: 100%;
 }
 
-body {
-	position: relative;
-}
-
 address,
 em {
 	font-style: normal;
@@ -95,18 +91,145 @@ button {
 	clip: rect(0, 0, 0, 0);
 }
 
-.test:after {
-	background-image: url(../img/sprite/sp_escape_book.png);
-	-webkit-background-size: 344px 171px;
-	        background-size: 344px 171px;
-	background-repeat: no-repeat;
+body {
+	background-color: #4f5566;
 }
 
-.test:after {
-	background-position: 0px 0px;
-	background-repeat: no-repeat;
-	width: 171px;
-	height: 171px;
+.wrap {
+	max-width: 768px;
+	min-height: 100%;
+	margin: 0 auto;
+	background-color: #b7b7b7;
+}
+
+.intro_wrapper .wrap {
+	background-color: #92c5a8;
+}
+
+.intro_wrapper .title {
+	font-size: 30px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.intro_wrapper .escape_list {
+	padding: 50px 20px;
+}
+
+.intro_wrapper .escape_list .list_item + .list_item {
+	margin-top: 15px;
+}
+
+.intro_wrapper .escape_list .link {
 	display: block;
-	content: '';
+}
+
+.intro_wrapper .escape_list .link.temp {
+	font-size: 30px;
+	line-height: 103px;
+	text-align: center;
+	border: 1px solid #000;
+	-webkit-border-radius: 4px;
+	        border-radius: 4px;
+}
+
+.intro_wrapper .escape_list img {
+	width: 100%;
+}
+
+.prolog_wrapper .wrap {
+	padding: 30px 20px;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+.prolog_wrapper .prolog_text {
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 30px;
+	text-align: center;
+}
+
+.prolog_wrapper .prolog_text + .prolog_text {
+	margin-top: 30px;
+}
+
+.prolog_wrapper .link {
+	position: relative;
+	display: block;
+	max-width: 374px;
+	margin: 30px auto 0;
+}
+
+.prolog_wrapper .link img {
+	width: 100%;
+}
+
+.prolog_wrapper .link_text_area {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	left: 0;
+	padding: 50px 20px;
+	text-align: center;
+	-webkit-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	        transform: translateY(-50%);
+}
+
+.prolog_wrapper .link_text_area .link_text {
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 30px;
+}
+
+.prolog_wrapper .link_text_area .link_text + .link_text {
+	margin-top: 20px;
+}
+
+.escape_book_wrapper .wrap {
+	padding: 30px 20px;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+.escape_book_wrapper .question_list .list_item img {
+	width: 100%;
+}
+
+.escape_book_wrapper .question_list .list_item + .list_item {
+	margin-top: 50px;
+}
+
+.escape_book_wrapper .question_list .input_area {
+	margin-top: 15px;
+	text-align: center;
+}
+
+.escape_book_wrapper .question_list .input_area .input {
+	display: inline-block;
+	width: 70%;
+	padding: 10px 15px;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 30px;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	vertical-align: top;
+	border: 3px solid #000;
+	background-color: #fff;
+}
+
+.escape_book_wrapper .question_list .input_area .btn_confirm {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 0 15px;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 50px;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	vertical-align: top;
+	border: 3px solid #000;
+	background-color: #fff;
 }

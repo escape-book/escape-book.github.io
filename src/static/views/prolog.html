@@ -8,38 +8,21 @@
   <link rel="stylesheet" href="../css/escape_book.css">
 </head>
 
-<body class="escape_book_wrapper">
+<body class="prolog_wrapper">
   <div class="wrap">
-    <ul class="question_list">
-      <li class="list_item">
-        <img src="../img/images/timetravel_page1_1.png" alt="">
-        <div class="input_area">
-          <input type="text" class="input" autocomplete="off">
-          <a href="#" class="btn_confirm">확인</a>
-        </div>
-      </li>
-      <li class="list_item">
-        <img src="../img/images/timetravel_page1_2.png" alt="">
-        <div class="input_area">
-          <input type="text" class="input" autocomplete="off">
-          <a href="#" class="btn_confirm">확인</a>
-        </div>
-      </li>
-      <li class="list_item">
-        <img src="../img/images/timetravel_page1_3.png" alt="">
-        <div class="input_area">
-          <input type="text" class="input" autocomplete="off">
-          <a href="#" class="btn_confirm">확인</a>
-        </div>
-      </li>
-      <li class="list_item">
-        <img src="../img/images/timetravel_page1_4.png" alt="">
-        <div class="input_area">
-          <input type="text" class="input" autocomplete="off">
-          <a href="#" class="btn_confirm">확인</a>
-        </div>
-      </li>
-    </ul>
+    <div class="prolog_text">프롤로그</div>
+    <div class="prolog_text">“후… 복권이나 당첨 안 되려나”</div>
+    <div class="prolog_text">부질없는 소릴 하며 야근이 끝난 후<br>피곤한 몸을 이끌고 집에 도착하였다.</div>
+    <div class="prolog_text">곧바로 샤워를 하고 침대로 향했는데<br>침대 위엔 의문의 편지 한 통이 놓여 있었다.</div>
+    <div class="prolog_text">“음…? 도둑이라도 들었나?”</div>
+    <div class="prolog_text">그렇게 생각한 찰나의 순간<br>알 수 없는 매력에 끌려 편지를 손에 들었다.</div>
+    <a href="./escape_book.html" class="link">
+      <img src="../img/images/intro_bg.jpg" alt="">
+      <div class="link_text_area">
+        <div class="link_text">사람들은 누구나 한 번쯤<br>과거를 바꾸고 싶어합니다.</div>
+        <div class="link_text">만약 과거를 바꿀 수 있다면<br>당신은 어떻게 하시겠습니까?</div>
+      </div>
+    </a>
   </div>
 
   <script src="../js/jquery-1.12.4.min.js"></script>
@@ -81,10 +64,13 @@
     }
 
     $(document).ready(function () {
-      $btn_confirm = $('.question_list .btn_confirm');
-      $btn_confirm.on('click', function (e) {
+      // test
+      $test = $('.test');
+      $test.on('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
+
+        $(this).attr('aria-expanded', 'true');
       });
     })
   </script>

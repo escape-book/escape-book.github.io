@@ -1,0 +1,40 @@
+@charset 'utf-8';
+
+.intro_wrapper {
+  .wrap {
+    background-color: #92c5a8;
+  }
+
+  .title {
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+  }
+
+  .escape_list {
+    padding: 50px 20px;
+
+    .list_item {
+      & + .list_item {
+        margin-top: 15px;
+      }
+    }
+
+    .link {
+      display: block;
+
+      // 추후 제거
+      &.temp {
+        font-size: 30px;
+        line-height: 103px;
+        text-align: center;
+        border: 1px solid #000;
+        border-radius: 4px;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

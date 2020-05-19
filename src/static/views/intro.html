@@ -8,39 +8,23 @@
   <link rel="stylesheet" href="../css/escape_book.css">
 </head>
 
-<body class="escape_book_wrapper">
-  <div class="wrap">
-    <ul class="question_list">
-      <li class="list_item">
-        <img src="../img/images/timetravel_page1_1.png" alt="">
-        <div class="input_area">
-          <input type="text" class="input" autocomplete="off">
-          <a href="#" class="btn_confirm">확인</a>
-        </div>
-      </li>
-      <li class="list_item">
-        <img src="../img/images/timetravel_page1_2.png" alt="">
-        <div class="input_area">
-          <input type="text" class="input" autocomplete="off">
-          <a href="#" class="btn_confirm">확인</a>
-        </div>
-      </li>
-      <li class="list_item">
-        <img src="../img/images/timetravel_page1_3.png" alt="">
-        <div class="input_area">
-          <input type="text" class="input" autocomplete="off">
-          <a href="#" class="btn_confirm">확인</a>
-        </div>
-      </li>
-      <li class="list_item">
-        <img src="../img/images/timetravel_page1_4.png" alt="">
-        <div class="input_area">
-          <input type="text" class="input" autocomplete="off">
-          <a href="#" class="btn_confirm">확인</a>
-        </div>
-      </li>
-    </ul>
-  </div>
+<body class="intro_wrapper">
+	<div class="wrap">
+		<h1 class="title">Escape List</h1>
+		<ul class="escape_list">
+			<li class="list_item">
+				<a href="./prolog.html" class="link">
+					<img src="../img/images/timetravel_logo.png" alt="">
+				</a>
+			</li>
+			<li class="list_item">
+				<a href="#" class="link temp">이상한 나라의 앨리스</a>
+			</li>
+			<li class="list_item">
+				<a href="#" class="link temp">문제 은행</a>
+			</li>
+		</ul>
+	</div>
 
   <script src="../js/jquery-1.12.4.min.js"></script>
   <!-- [D] 마크업 확인용 스크립트 -->
@@ -81,10 +65,13 @@
     }
 
     $(document).ready(function () {
-      $btn_confirm = $('.question_list .btn_confirm');
-      $btn_confirm.on('click', function (e) {
+      // test
+      $test = $('.test');
+      $test.on('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
+
+        $(this).attr('aria-expanded', 'true');
       });
     })
   </script>

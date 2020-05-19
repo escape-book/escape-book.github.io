@@ -1,0 +1,50 @@
+@charset 'utf-8';
+
+.prolog_wrapper {
+  .wrap {
+    padding: 30px 20px;
+    box-sizing: border-box;
+  }
+
+  .prolog_text {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+
+    & + .prolog_text {
+      margin-top: 30px;
+    }
+  }
+
+  .link {
+    position: relative;
+    display: block;
+    max-width: 374px;
+    margin: 30px auto 0;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .link_text_area {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    padding: 50px 20px;
+    text-align: center;
+    transform: translateY(-50%);
+
+    .link_text {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 30px;
+
+      & + .link_text {
+        margin-top: 20px;
+      }
+    }
+  }
+}
