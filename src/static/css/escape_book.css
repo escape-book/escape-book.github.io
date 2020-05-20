@@ -157,8 +157,7 @@ body {
 .prolog_wrapper .link {
 	position: relative;
 	display: block;
-	max-width: 374px;
-	margin: 30px auto 0;
+	margin-top: 30px;
 }
 
 .prolog_wrapper .link img {
@@ -167,14 +166,24 @@ body {
 
 .prolog_wrapper .link_text_area {
 	position: absolute;
-	top: 50%;
+	top: 0;
 	right: 0;
+	bottom: 0;
 	left: 0;
-	padding: 50px 20px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 	text-align: center;
-	-webkit-transform: translateY(-50%);
-	    -ms-transform: translateY(-50%);
-	        transform: translateY(-50%);
 }
 
 .prolog_wrapper .link_text_area .link_text {
@@ -203,6 +212,7 @@ body {
 
 .escape_book_wrapper .question_list .input_area {
 	margin-top: 15px;
+	font-size: 0;
 	text-align: center;
 }
 
@@ -213,11 +223,11 @@ body {
 	font-size: 20px;
 	font-weight: bold;
 	line-height: 30px;
+	border: 3px solid #000;
+	background-color: #fff;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	vertical-align: top;
-	border: 3px solid #000;
-	background-color: #fff;
 }
 
 .escape_book_wrapper .question_list .input_area .btn_confirm {
@@ -227,9 +237,9 @@ body {
 	font-size: 20px;
 	font-weight: bold;
 	line-height: 50px;
+	border: 3px solid #000;
+	background-color: #fff;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	vertical-align: top;
-	border: 3px solid #000;
-	background-color: #fff;
 }
